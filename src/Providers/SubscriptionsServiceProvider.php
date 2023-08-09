@@ -62,4 +62,17 @@ class SubscriptionsServiceProvider extends ServiceProvider
         $this->publishesMigrations('rinvex/laravel-subscriptions');
         ! $this->autoloadMigrations('rinvex/laravel-subscriptions') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
+
+    public function registerCommands()
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        foreach ($this->commands as $key => $value) {
+            $this->app->singleton($value, $key);
+        }
+
+        $this->commands(array_values($this->commands));
+    }
 }
