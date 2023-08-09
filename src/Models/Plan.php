@@ -80,26 +80,7 @@ class Plan extends Model implements Sortable
     /**
      * {@inheritdoc}
      */
-    protected $fillable = [
-        'slug',
-        'name',
-        'description',
-        'is_active',
-        'price',
-        'signup_fee',
-        'currency',
-        'trial_period',
-        'trial_interval',
-        'invoice_period',
-        'invoice_interval',
-        'grace_period',
-        'grace_interval',
-        'prorate_day',
-        'prorate_period',
-        'prorate_extend_due',
-        'active_subscribers_limit',
-        'sort_order',
-    ];
+    protected $guarded = [];
 
     /**
      * {@inheritdoc}
@@ -122,6 +103,7 @@ class Plan extends Model implements Sortable
         'active_subscribers_limit' => 'integer',
         'sort_order' => 'integer',
         'deleted_at' => 'datetime',
+        'meta' => 'array',
     ];
 
     /**
